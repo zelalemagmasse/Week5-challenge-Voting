@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VOTE THE DISH</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container" >
+    <h2>VOTE FOR THE DISH</h2>
+<div th:each="eachDish:${dishes}">
+    <table >
+        <thead>
+        <tr class="success" >
+            <th></th>
+            <th><div th:switch="${eachDish.getIsTasty()}">
+                <span th:case="1">TASTY</span>
+                <span th:case="-1"></span>
+                <span th:case="0"></span>
+            </div> </th>
+            <th ></th>
+            <th> </th>
+            <th ><div th:switch="${eachDish.getIsTasty()}">
+                <span th:case="1"></span>
+                <span th:case="-1">NASTY</span>
+                <span th:case="0"></span>
+            </div></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info"  >
+
+
+            <td><div><img class="image" th:src="${eachDish.getImageUrl()}" width="200" height="200"></div></td>
+            <td> <a th:href="@{/redirecttasty/{id}(id=${eachDish.id})}"><button class="btn btn-warning">TASTY</button></a> </td>
+            <td th:text="${eachDish.getTastyCount()}"> </td>
+            <td> <a th:href="@{/redirectnasty/{id}(id=${eachDish.id})}"><button class="btn btn-warning">NASTY</button></a> </td>
+            <td th:text="${eachDish.getNastyCount()}"> </td>
+
+
+
+        </tr>
+
+
+        </tbody>
+    </table><br/>
+</div>
+    <a th:href="@{/adddish}"><button class="btn btn-primary">ADD MORE DISH</button></a>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
