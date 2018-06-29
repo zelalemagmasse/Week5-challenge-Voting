@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>VOTE THE DISH</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" th:href="@{/css/mystlysheet.css}">
+    <!--<link rel="stylesheet" href="../static/css/mystlysheet.css">-->
 </head>
-<body>
-
+<body c>
+<div class="jumbotron ">
 <div class="container" >
     <h2>VOTE FOR THE DISH</h2>
-<div th:each="eachDish:${dishes}">
+<div  th:each="eachDish:${dishes}">
     <table >
         <thead>
         <tr class="success" >
@@ -34,13 +35,13 @@
         <tr class="info"  >
 
 
-            <td><div><img class="image" th:src="${eachDish.getImageUrl()}" width="200" height="200"></div></td>
-            <td> <a th:href="@{/redirecttasty/{id}(id=${eachDish.id})}"><button class="btn btn-warning">TASTY</button></a> </td>
+            <td><div><img class="image" th:src="${eachDish.getImageUrl()}" width="250" height="250"></div></td>
+            <td> <a th:href="@{/redirecttasty/{id}(id=${eachDish.id})}"><button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-thumbs-up"></span> TASTY   </button></a> </td>
             <td th:text="${eachDish.getTastyCount()}"> </td>
-            <td> <a th:href="@{/redirectnasty/{id}(id=${eachDish.id})}"><button class="btn btn-warning">NASTY</button></a> </td>
+            <td> <a th:href="@{/redirectnasty/{id}(id=${eachDish.id})}"><button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-thumbs-down"></span> NASTY </button></a> </td>
             <td th:text="${eachDish.getNastyCount()}"> </td>
-
-
 
         </tr>
 
@@ -53,6 +54,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>
 
